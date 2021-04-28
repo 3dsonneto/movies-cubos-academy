@@ -1,11 +1,23 @@
 class Movie {
-  String poster_path;
-  String release_date;
-  String title;
+  List<MovieResults> results;
 
   Movie.fromJson(Map<String, dynamic> json) {
-    poster_path = json["poster_path"];
-    release_date = json["release_date"];
+    var resultsArray = json["results"] as List;
+
+    results = resultsArray.map((item) {
+      return MovieResults.fromJson(item["results"]);
+    }).toList();
+  }
+}
+
+class MovieResults {
+  String posterPath;
+  String releaseDate;
+  String title;
+
+  MovieResults.fromJson(Map<String, dynamic> json) {
+    posterPath = json["poster_path"];
+    releaseDate = json["release_date"];
     title = json["title"];
   }
 }
