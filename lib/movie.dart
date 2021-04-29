@@ -5,7 +5,7 @@ class Movie {
     var resultsArray = json["results"] as List;
 
     results = resultsArray.map((item) {
-      return MovieResults.fromJson(item["results"]);
+      return MovieResults.fromJson(item);
     }).toList();
   }
 }
